@@ -1,7 +1,11 @@
 [package]
 name = "scrapbook"
 version = "0.1.0"
+authors = ["mwatanabe <ma3ki0708.ia@gmail.com>"]
 edition = "2021"
+license = "MIT"
+repository = "https://github.com/glaceef/scrapbook"
+rust-version = "1.71.0"
 
 [package.metadata.docs.rs]
 all-features = true
