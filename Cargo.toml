@@ -1,0 +1,22 @@
+[package]
+name = "scrapbook"
+version = "0.1.0"
+edition = "2021"
+
+[package.metadata.docs.rs]
+all-features = true
+targets = ["x86_64-unknown-linux-gnu"]
+rustdoc-args = ["--cfg", "docsrs"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = ["handlebars"]
+handlebars = ["dep:handlebars"]
+
+[dependencies]
+handlebars = { version = "4.3.7", features = ["dir_source"], optional = true }
+paste = "1.0.12"
+seq-macro = "0.3.3"
+serde = { version = "1.0.164", features = ["derive"] }
+serde_json = "1.0.99"
