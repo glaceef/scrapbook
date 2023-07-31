@@ -10,11 +10,9 @@ impl<'a> TemplateEngine for Handlebars<'a> {
         Handlebars::new()
     }
 
-    fn render<T: Serialize>(&self, partial: Partial, data: T) -> String {
-        let data2 = serde_json::to_string_pretty(&data).unwrap();
-        println!("{data2}");
-
-        self.render(&partial, &data).unwrap()
+    fn render<T: Serialize>(self, partial: Partial, data: T) -> String {
+        // 関数名が被ってしまった。
+        Handlebars::render(&self, &partial, &data).unwrap()
     }
 }
 

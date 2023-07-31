@@ -12,5 +12,5 @@ pub use self::handlebars::Engine;
 pub trait TemplateEngine: Sized {
     fn new<'a>() -> Self;
 
-    fn render<T: Serialize>(&self, partial: Partial, data: T) -> String;
+    fn render<T: Serialize>(self, partial: Partial, data: T) -> String;
 }

@@ -30,7 +30,7 @@ impl<MD> Scrapbook<MD> {
         Self { master_data }
     }
 
-    pub fn render<'a, E, T>(&'a self, init: fn(E) -> E) -> String
+    pub fn render<'a, E, T>(&'a self, init: fn(&mut E)) -> String
     where
         E: TemplateEngine,
         T: SectionData<'a>,
@@ -41,10 +41,9 @@ impl<MD> Scrapbook<MD> {
         let data = <T as SectionData>::Data::from_master_data(&self.master_data);
         let section_data = <T as SectionData>::section_data(&partial, data);
 
-        // 本当は可変参照を受け取るだけにしたかったが、その後 Engine::render に
-        // 不変参照を渡すことができなくなってしまうため断念。
-        let engine = init(<E as TemplateEngine>::new());
+        let mut engine = <E as TemplateEngine>::new();
+        init(&mut engine);
 
-        E::render(&engine, partial, &section_data)
+        E::render(engine, partial, section_data)
     }
 }
