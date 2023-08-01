@@ -3,6 +3,10 @@
 // #![deny(missing_docs)]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
+// re-export handlebars
+#[cfg(feature = "handlebars")]
+pub use handlebars;
+
 mod extract;
 mod partial;
 mod section;
