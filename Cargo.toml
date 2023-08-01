@@ -1,6 +1,7 @@
 [package]
 name = "scrapbook"
-version = "0.1.0"
+version = "0.1.1"
+description = "Documentation library using hierarchically partial templates"
 authors = ["mwatanabe <ma3ki0708.ia@gmail.com>"]
 edition = "2021"
 license = "MIT"
